@@ -1,0 +1,218 @@
+<div class="content" ng-click="check_dropdowns()">
+	<div class="content_main">
+		<div class="map_div" id='map_canvas'>
+			<ui-gmap-google-map id="mymap" center="mapcenter" zoom="mapzoom" draggable="true" mark-click="false" options='mapoptions'>
+				<ui-gmap-circle center="pos" radius="maprad" stroke='mapstroke' fill='mapfill' visible='visible'></ui-gmap-circle>
+				<ui-gmap-marker idKey='marker.id' ng-repeat='marker in mainmarkers' icon='marker.icon' coords='marker.coords' click='markerclick(marker)'></ui-gmap-marker>
+			</ui-gmap-google-map>
+		</div>
+		<div class="content_settings">
+			<div class="left_settings">
+				<div class="settings_select">
+					<div class="select_indi" ng-repeat="type in types">
+						<input type="checkbox" class="selectbox" ng-change='change_type(type);' ng-model='type.check'>
+						<div class="select_name">{{type.name}}</div>
+					</div>
+				</div>
+				<div class="settings_options">
+					<div class="date_select">
+						<div class="date_text">Find media assets available:</div>
+						<div class="date_indi">
+							<datepicker todate='{{todate}}' togodate='{{fdate}}' placeholderdata='From' ng-model='fromdate'></datepicker>
+						</div>
+						<div class="date_indi">
+							<datepicker todate='{{todate}}' togodate='{{tdate}}' placeholderdata='To' ng-model='tilldate'></datepicker>
+						</div>
+					</div>					
+					<div class="location_select">
+						<div class="city_select_wrap">
+							<div class="city_div" ng-click="location_drop();">
+								<div class="location_name">{{city}}</div>
+								<div class="selector_icon"><img src="images/select_icon.png" class="select_icon_img"></div>
+							</div>
+							<div class="location_select_options" ng-show="locationflag">
+								<a ui-sref="main({city:city.name,type:mtype,locality:'None','fromdate':fdate,'tilldate':tdate})" class="location_select_indi" ng-repeat="city in cities">{{city.name}}</a>
+							</div>
+						</div>
+						<div class="locality_select_wrap">
+							<div class="locality_div" ng-click="locality_drop();">
+								<div class="location_name">{{locality}}</div>
+								<div class="selector_icon"><img src="images/select_icon.png" class="select_icon_img"></div>
+							</div>
+							<div class="locality_select_options" ng-show="localityflag">
+								<div class="locality_chkbox_wrap" style="padding-bottom:5px;margin-bottom:5px;border-bottom:1px solid #bababa;">
+									<input type="checkbox" name="select_all" ng-change="select_all();" ng-model="all_localities">
+									<span class="locality_chkbox_name">Select All</span>
+									<input type="checkbox" style="margin-left:15px;">
+									<span class="locality_chkbox_name">Prime Areas</span><br>
+									<span class="to_knw_mre">To know more about each locality in this city like the demographics,geography,important locations etc.. <a href="">click here</a></span>
+	
+								</div>
+								<div class="locality_chkbox_wrap">
+									<div class="locality_chkbox_indi" ng-repeat="locality in localities">
+										<input type="checkbox" name="locality_select" ng-model="locality.check" ng-change='locality_change(locality)'>
+										<span class="locality_chkbox_name">{{locality.name}}</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="mrore_filters">
+						<div class="ech_filter" ng-click="variables_true('visibility')">
+							<span>Visibility</span>
+						</div>
+						<div class="ech_filter" ng-click="variables_true('lineofsight')">
+							<span>Line of sight</span>
+						</div>
+						<div class="ech_filter">
+							<span>Footfall</span>
+						</div>
+						<div class="ech_filter" style="border:0px;width:77px;" ng-click="variables_true('timeofsight')">
+							<span>Time of sight</span>
+						</div>
+					</div>
+					<div class="search_div">
+						<input type="text" name="" placeholder='Search for a Place' class='search_box' id="">
+						<div class="search_icon_div"><img src='images/search_icon.png'></div>
+					</div>
+					
+				</div>
+			</div>
+			<div class="right_settings">
+				<i class="fa fa-times close_btn_stuf"></i>
+				<div class="website_info">
+					<img src="images/tick_icon.png" class="tick_icon">
+					<div class="info_text">Outdoor Monk is a marketing agency which offers media asset booking services through the internet</div>
+				</div>
+				<div class="website_info">
+					<img src="images/tick_icon.png" class="tick_icon">
+					<div class="info_text">Since we book all these media assets in bulk from the owners we get the best deals</div>
+				</div>
+			</div>
+		</div>
+		<div class="content_info" ng-if="selected">
+			<div class="hoarding_info_div">
+				<div class="hoarding_img_div">
+					<img src="{{requesturl+'/uploads/'+mainasset.image}}" class='hoarding_img'>
+					<div class="hoarding_img_text" ng-click='show_slideshow()'>Click to view Photos</div>
+				</div>
+				<div class="dets_btns">
+					<div class="ech_btn" style="border-left:0px;">
+						<span>Core</span>
+					</div>
+					<div class="ech_btn" style="background:#616161;">
+						<span>Basic</span>
+					</div>
+					<div class="ech_btn">
+						<span>Availability</span>
+					</div>
+				</div>
+				<div class="hoarding_details">
+					
+					<div class="details_indi">
+						<div class="details_bullet"></div>
+						<div class="details_text">Hoarding size (w x h):{{mainasset.size}}</div>
+					</div>
+					<div class="details_indi">
+						<div class="details_bullet"></div>
+						<div class="details_text">Minimum booking period: 1 month</div>
+					</div>
+					<div class="details_indi">
+						<div class="details_bullet"></div>
+						<div class="details_text">Lit: {{mainasset.lit}}</div>
+					</div>
+					<div class="details_indi">
+						<div class="details_bullet"></div>
+						<div class="details_text">Location: {{mainasset.location}}</div>
+					</div>
+					<div class="details_indi">
+						<div class="details_bullet"></div>
+						<div class="details_text">Visiblity:{{mainasset.visibility}}</div>
+					</div>
+
+				</div>
+				<div class="hoarding_calender_div"></div>
+				<div class="hording_data">
+					<div class='compare_div' style="display:none;">
+						<span class="add_compare">Add this to Compare list</span>
+					</div>
+					<div class="footfall_div">
+						<i class="fa fa-male"></i>
+						<span style="margin-left:7px;">Footfall:{{mainasset.footfall}}</span>
+					</div>
+					<div class="price_div">
+						<div class="original_price">
+							<div class="price_text">Original Price:</div>
+							<div class='org_price_data'>1 month @ Rs {{mainasset.orginal_price}}/month</div>
+						</div>
+						<div class="our_price">
+							<div class="price_text">Our Price:</div>
+							<div class="price_select_div">
+								<div class="price_select">1 month @ Rs {{get_displayprice(mainasset.discount_percent,mainasset.orginal_price)}}/month</div>
+								<div class="select_icon_div">
+									<img src="images/select_icon.png">
+								</div>
+							</div>
+						</div>
+						<div class="saving_div">You save Rs {{get_discount(mainasset.discount_percent,mainasset.orginal_price)}}/-</div>
+						<div class="instal_cost">Installation Cost: Rs {{mainasset.installation}}/-</div>
+						<div class="advance_cost">
+							<span>Advance({{mainasset.advance_percent}}% of total cost): <br>Rs {{get_discount(mainasset.advance_percent,mainasset.orginal_price)}}/-</span>
+							<span class="whats_this_adv">(What's this?)</span>
+						</div>
+					</div>
+				</div>
+				<div class="hoarding_booking_div">
+					<div class="booking_buttons assetbook" ng-click="bookthisadspace()">Book</div>
+					
+				</div>
+				<div class='add_camp_div'><span class='add_camp' ng-click="adthistocampaignfun()">Add this to a Campaign >></span></div>
+				
+			</div>
+		</div>
+		<div class="content_map">
+			<div class="marker_info"></div>
+			<div class="marker_info" style=''>
+				<div class="info_indi">
+					<div class="marker_icon"><img src='images/available_icon.png'></div>
+					<div class="marker_text">Available</div>
+				</div>
+				<div class="info_indi">
+					<div class="marker_icon"><img src='images/unavailable_icon.png'></div>
+					<div class="marker_text">Not Available</div>
+				</div>
+				<div class="info_indi">
+					<div class="marker_icon"><img src='images/partavail_icon.png'></div>
+					<div class="marker_text">Intermittently Available</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="slider" ng-if='showslider'>
+	<div class="slider_main">
+		<div class="slider_img">
+			<div class="slider_close" ng-click="close_slider()"><i class="fa fa-times fa-3x"></i></div>
+			<div class="slide_pnl_left" ng-show='show_left()' ng-click='move_left()'><i class="fa fa-angle-left"></i></div>
+			<div class="slider_main"><img src="{{requesturl+'/uploads/'+sliderimg}}" alt=""></div>
+			<div class="slide_pnl_right" ng-show='show_right()' ng-click='move_right()'><i class="fa fa-angle-right"></i></div>
+		</div>
+		<div class="slide_panel">
+			<div class="slide_img_pnl">
+					<img ng-repeat='slide in mainasset.slideshow' ng-class='imgactive(slide)' src="{{requesturl+'/uploads/'+slide.imagepath}}" ng-click='change_slider(slide)'>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="visibility_pic">
+	<img src="images/visibility.png" ng-show="visibilityphoto" style="width:600px;">
+	<img src="images/cross_icon.png" class="vis_close_icn" ng-show="visibilityphoto" ng-click="variables_true('visibilityclose')">
+
+	<img src="images/lineofsight.png" ng-show="lineofsightphoto" style="width:600px;">
+	<img src="images/cross_icon.png" class="vis_close_icn" ng-show="lineofsightphoto" ng-click="variables_true('lineofsightclose')">
+
+	<img src="images/timeofsight.png" ng-show="timeofsightphoto" style="width:600px;">
+	<img src="images/cross_icon.png" class="vis_close_icn" ng-show="timeofsightphoto" ng-click="variables_true('timeofsightclose')">
+</div>
+
+<div class="lightbox" ng-show="lightbox"></div>

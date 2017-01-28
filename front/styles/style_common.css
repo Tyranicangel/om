@@ -1,0 +1,172 @@
+body{
+	width: 100%;
+	height: 100%;
+	margin:0px;
+}
+*:focus{
+	outline: none;
+}
+.main{
+	float:left;
+	width: 100%;
+}
+.header{
+	float: left;
+	width: 100%;
+	padding:7px;
+	background: #f5f5f5;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+.header img{
+	float:left;
+}
+.logo_div{
+	float:left;
+	width:200px;
+	height:20px;
+	padding:5px;
+	margin-right:10px;
+	margin-left:9px;
+	margin-top: 3px;
+}
+.contact_div{
+	float:left;
+	height: 20px;
+	padding:5px;
+	margin-right:30px;
+}
+.whats_this_adv
+{
+	font-size: 11px;
+	color: #474646;
+}
+.whats_this_adv:hover
+{
+	cursor:pointer;
+	text-decoration: underline;
+}
+.contact_info{
+	float:left;
+	font-family: open sans;
+	line-height:20px;
+	font-size:12px;
+	margin-left:10px;
+	margin-top:4px;
+}
+.analytics_div{
+	float:left;
+	height:30px;
+	font-family: Arial;
+	margin-left:55px;
+}
+.analytics_info{
+	float:left;
+	text-align: center;
+	font-size:10px;
+	width:150px;
+	line-height:12px;
+	margin-right:10px;
+	padding:4px;
+}
+.analytics_button{
+	float:left;
+	font-size:12px;
+	line-height:30px;
+	width:150px;
+	background:#e10b1c;
+	color:#ffffff;
+	text-align: center;
+	box-shadow: inset 2px 1px 5px #ffffff;
+	border: 1px solid #bababa;
+	font-family: open sans;
+	cursor:pointer;
+}
+.analytics_button:active{
+	border:1px solid #e10b1c;
+	box-shadow:none;
+}
+.account_div{
+	float:right;
+	padding:10px;
+	height:20px;
+	font-family: Arial;
+}
+.account_info{
+	float:left;
+	width:20px;
+	height:20px;
+	margin:0px 15px;
+	position: relative;
+}
+.account_alert{
+	float:left;
+	padding:4px;
+	line-height:8px;
+	font-size:8px;
+	color:#ffffff;
+	background:#e10b1c;
+	position: absolute;
+	top:-10px;
+	right:-10px;
+	border-radius:6px;
+}
+.login_div{
+	float:left;
+	font-size:12px;
+	line-height:12px;
+	margin:4px 5px;
+	cursor: pointer;
+}
+.login_div:hover{
+	text-decoration: underline;
+}
+.content{
+	width:100%;
+	float:left;
+}
+.footer{
+	float:left;
+	width:100%;
+}
+.footer_div{
+	float:left;
+	width:100%;
+	background:#3d3d3d;
+	font-family:Arial;
+	margin-top:20px;
+	color:#ffffff;
+	position:relative;
+	height:180px;
+}
+.footer_left{
+	float:left;
+	width:500px;
+	padding:20px;
+}
+.footer_text{
+	float:left;
+	width:250px;
+	font-size:12px;
+}
+.footer_right{
+	float:right;
+	width:300px;
+	padding:20px;
+}
+.footer_links{
+	float: left;
+	width:300px;
+	text-align: right;
+	font-size:13px;
+	margin-bottom:5px;
+}
+.copyright_div{
+	float:right;
+	font-size:10px;
+	position: absolute;
+	bottom:5px;
+	right:5px;
+}

@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en" ng-app="OmApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Home</title>
+	<link rel="stylesheet" type="text/css" href="styles/style.css">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300'">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Andada">
+	<script type="text/javascript" src="scripts/angular.js"></script>
+	<script type="text/javascript" src="scripts/route.js"></script>
+	<script type="text/javascript" src="scripts/jquery.js"></script>
+	<script type="text/javascript" src="scripts/app.js"></script>
+	<script type="text/javascript" src="scripts/controller.js"></script>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+</head>
+<body ng-controller="MainController">
+	<div class="main">
+		<div class="header">
+			<div class="logo_div">
+				<img src="images/logo.png">
+			</div>
+			<div class="header_mnu_div">
+				<ul class="hd_menu_ul">
+					<li style="width:70px;">Home</li>
+					<li style="width:70px;">Map</li>
+					<li>Campaigns(2)</li>
+					<li>OM Enquiries</li>
+					<li>Agency Enquiries</li>
+					<li>Confirm Assets</li>
+					<li>Manage Agencies</li>
+					<li style="border-right:0px;">Bookings</li>
+				</ul>
+			</div>
+			<div class="account_div">
+				<div class="login_div" ng-hide="logged">Logout</div>
+			</div>
+		</div>
+		<div ui-view>
+			<div class="content">
+				<div class="content_main">
+					<div class="owner_data">
+						<div class="owner_data_left">
+							<div class="owner_data_header">
+								<div class="owner_heading">Owner's Login</div>
+								<div class="owner_heading">|</div>
+								<div class="owner_name">Prakash Arts</div>
+							</div>
+							<div class="settings_select" style="box-shadow:0px 0px 0px;border:1px solid #8a8a8a;margin-top:10px;">
+								<div class="select_indi" ng-repeat="type in types">
+									<input type="checkbox" class="selectbox" ng-change='change_type(type);' ng-model='type.check'>
+									<div class="select_name">{{type.name}}</div>
+								</div>
+							</div>
+							<div class="location_select" style="box-shadow:0px 0px 0px;border:1px solid #8a8a8a;margin:0px;margin-top:10px;">
+								<div class="city_select_wrap">
+									<div class="city_div" ng-click="location_drop();">
+										<div class="location_name">{{city}}</div>
+										<div class="selector_icon"><img src="images/select_icon.png" class="select_icon_img"></div>
+									</div>
+									<div class="location_select_options" ng-show="locationflag" style="border:1px solid #8a8a8a;left:-9px;">
+										<a ui-sref="main({city:city.name,type:mtype,locality:'None'})" class="location_select_indi" ng-repeat="city in cities">{{city.name}}</a>
+									</div>
+								</div>
+								<div class="locality_select_wrap">
+									<div class="locality_div" ng-click="locality_drop();">
+										<div class="location_name">{{locality}}</div>
+										<div class="selector_icon"><img src="images/select_icon.png" class="select_icon_img"></div>
+									</div>
+									<div class="locality_select_options" ng-show="localityflag" style="border:1px solid #8a8a8a;left:-164px;">
+										<div class="locality_chkbox_wrap" style="padding-bottom:5px;margin-bottom:5px;border-bottom:1px solid #bababa;">
+											<input type="checkbox" name="select_all" ng-change="select_all();" ng-model="all_localities">
+											<span class="locality_chkbox_name">Select All</span>
+										</div>
+										<div class="locality_chkbox_wrap">
+											<div class="locality_chkbox_indi" ng-repeat="locality in localities">
+												<input type="checkbox" name="locality_select" ng-model="locality.check" ng-change='locality_change(locality)'>
+												<span class="locality_chkbox_name">{{locality.name}}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="filters_btm_div">
+								<div class="show_bkd">
+									<p>Show Assets: <input type="radio" class="av_radio" name="avail">Available <input type="radio"  class="av_radio" name="avail">Booked</p>
+									<table border="0" style="margin-left:10px;">
+										<tr>
+											<td>From:</td>
+											<td><input type="text" style="width:100px;"></td>
+										</tr>
+										<tr>
+											<td>To:</td>
+											<td><input type="text" style="width:100px;"></td>
+										</tr>
+									</table>
+								</div>
+								<div class="srch_own">
+									<input type="text" class="own_srch_inp" placeholder="Search using description, base cost, ref no">
+									<div class="srch_icon">
+										<i class="fa fa-search" style="margin-top:5px;"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="owner_data_right">
+							<div class="owner_details">
+								<div class="details_header">
+									<div class="details_heading">Owner Details</div>
+									<div class="edit_details">Edit</div>
+								</div>
+								<div class="details_data">
+									<div class="details_indi">Owner's Name : Prakash Arts</div>
+									<div class="details_indi">Address : Himayatnagar</div>
+									<div class="details_indi">Date of Registration : 12/4/2014</div>
+									<div class="details_indi">City : Hyderabad</div>
+									<div class="details_indi">Contact Person : Ahmed Khan</div>
+									<div class="details_indi">Contact Number : +91 9777890784</div>
+								</div>
+							</div>
+							<div class="pag_dv">
+								
+							</div>
+						</div>
+					</div>
+					<div class="asset_data">
+						<div class="asset_header">
+							<div class="asset_header_indi descr">Description</div>
+							<div class="asset_header_indi cat">Category</div>
+							<div class="asset_header_indi city">City</div>
+							<div class="asset_header_indi base">Base Cost</div>
+							<div class="asset_header_indi sell">Selling Price</div>
+							<div class="asset_header_indi ref">Ref No</div>
+							<div class="asset_header_indi photo">Photos</div>
+						</div>
+						<div class="asset_indi" ng-repeat='marker in mainmarkers'>
+							<div class="asset_info">
+								<div class="asset_opts descr">{{marker.localities.name+' '+marker.location}}</div>
+								<div class="asset_opts cat">{{marker.types.name}}</div>
+								<div class="asset_opts city">{{city}}</div>
+								<div class="asset_opts base">
+									<div ng-show='marker.showorigin==false'>
+										{{'Rs '+marker.orginal_price}}
+									</div>
+									<div ng-show='marker.showorigin==true'>
+										<input type="text" ng-model='marker.orginal_price'>
+									</div>
+									<div class="edit_save" ng-show='marker.showorigin==false' ng-click='show_origin_edit(marker)'>Edit</div>
+									<div class="edit_save" ng-show='marker.showorigin==true' ng-click='hide_origin_edit(marker)'>Save</div>
+								</div>
+								<div class="asset_opts sell">
+									<div ng-show='marker.showmy==false'>
+										{{'Rs '+marker.my_price}}
+									</div>
+									<div ng-show='marker.showmy==true'>
+										<input type="text" ng-model='marker.my_price'>
+									</div>
+									<div class="edit_save" ng-show='marker.showmy==false' ng-click='show_my_edit(marker)'>Edit</div>
+									<div class="edit_save" ng-show='marker.showmy==true' ng-click='hide_my_edit(marker)'>Save</div>
+								</div>
+								<div class="asset_opts ref">{{marker.ref}}</div>
+								<div class="asset_opts photo"><img class='table_img' src="{{requesturl+'/uploads/'+marker.image}}"></div>
+								<div class="asset_opts book"><div class='table_button' ng-show="marker.showbook==false" ng-click='show_bookings(marker)'>Book</div></div>
+								<div class="asset_opts book"><div class='table_button' ng-show='marker.showbook==true' ng-click='hide_bookings(marker)'>Hide</div></div>
+							</div>
+							<div class="asset_bookings" ng-show="marker.showbook==true">
+								<div class="asset_book_wrap">
+									<div class="asset_book_heading">Current Bookings</div>
+									<div class="asset_book_indi">
+										<div class="bookdates">23/4/2014</div>
+										<div class="bookdates">to</div>
+										<div class="bookdates">23/5/2014</div>
+										<div class="bookedit">Edit</div>
+										<div class="bookedit">Delete</div>
+									</div>
+								</div>
+								<div class="asset_book_wrap">
+									<div class="asset_book_heading">Book this Media Asset</div>
+									<div class="booking_indi">
+										<div class="booking_text">From : </div>
+										<input type="text" class='dbox'>
+									</div>
+									<div class="booking_indi">
+										<div class="booking_text">To : </div>
+										<input type="text" class='dbox'>
+									</div>
+									<div class="booking_button">Book</div>
+								</div>
+								<div class="report_div">Report this</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

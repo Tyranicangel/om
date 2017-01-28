@@ -1,0 +1,28 @@
+<div class="calendar_wrap">
+	<input type="text" class='datebox' placeholder="{{placeholderdata}}" readonly ng-model='giveoutdate'>
+	<div class="cal_icon" ng-click='show_calendar()'><i class="fa fa-calendar"></i></div>
+	<div class="cal_main" ng-show='showcal'>
+		<div class="cal_top_bar">
+			<div class="cal_move_icons" ng-click='goleft()'><i class="fa fa-caret-square-o-left"></i></div>
+			<div class="cal_month">{{month+'  '+year}}</div>
+			<div class="cal_move_icons" ng-click='goright()'><i class="fa fa-caret-square-o-right"></i></div>
+		</div>
+		<table class='caltable'>
+			<tr>
+				<th>Su</th>
+				<th>Mo</th>
+				<th>Tu</th>
+				<th>We</th>
+				<th>Th</th>
+				<th>Fr</th>
+				<th>Sa</th>
+			</tr>
+			<tr ng-repeat='x in output'>
+				<td ng-repeat='y in x' ng-class='y[2]' ng-click='giveback(y)'>
+					{{y[0]}}
+				</td>
+			</tr>
+			</tr>
+		</table>
+	</div>
+</div>

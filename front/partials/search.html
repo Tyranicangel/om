@@ -1,0 +1,40 @@
+<div class="main_div_ind">
+	<div class="city_srch_dv">
+		<div class="ttl_srchdv">
+			<div class="inp_dv">
+				<input type="text" class="city_search_inpt" placeholder="Search for a city to book outdoor media" ng-model="search.searchterm">
+			</div>
+			<div class="srchicn" ng-click="searchcity()">
+				<i class="fa fa-search fa-lg" style='margin-top:7px;'></i>
+			</div>
+			<div style="clear:both;"></div>
+			<div class="searchresult" ng-show="search.searchterm">
+				    <div class="searchresultindi" ui-sref="main({city:city.name,type:'None',locality:'None'})" ng-repeat="city in cities | filter:search.searchterm">{{city.name}}</div>
+				    <p ng-show="(cities | filter:search.searchterm).length==0">Sorry no results!</p>
+			</div>
+			<div style="clear:both;"></div>
+			<div class="err_dv_main_pg_hidden">
+				<div class="errormesg" ng-show="errmesg">{{errormessage}}</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<div class="publ_img">
+		<img src="images/sample.png" alt="">
+	</div>
+	<div class="usr_des_dv">
+		<div class="usr_typ_dvs_ttl">
+			<div class="usr_type_dv">
+				<span>How does it work?</span>
+			</div>
+			<div class="usr_type_dv">
+				<span>Media Owners?</span>
+			</div>
+			<div class="usr_type_dv">
+				<span>Media Agents?</span>
+			</div>
+		</div>
+	</div>
+</div>
+

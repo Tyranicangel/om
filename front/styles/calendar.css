@@ -1,0 +1,103 @@
+.calendar_wrap{
+	float: left;
+	width: 125px;
+	height: 24px;
+	position: relative;
+	font-family: arial;
+	font-size: 11px;
+}
+.datebox{
+	float: left;
+	width: 80px;
+	margin: 0px;
+	border: 1px solid #bababa;
+	height: 20px;
+	border-radius: 4px;
+	padding: 1px 5px;
+	font-size: 11px;
+}
+.cal_icon{
+	float: left;
+	height: 15px;
+	width: 15px;
+	border-radius: 4px;
+	margin-left: 5px;
+	padding: 2px 4px 4px 4px;
+	border: 1px solid #f5f5f5;
+	cursor: pointer;
+	font-size: 15px;
+}
+.cal_icon:hover{
+	background: #eeeeee;
+}
+.cal_main{
+	float: left;
+	width: 150px;
+	border: 1px solid #e5e5e5;
+	border-radius: 5px;
+	position: absolute;
+	top: 25px;
+	left: 0px;
+	background:#ffffff;
+	z-index:1;
+}
+.cal_top_bar{
+	float: left;
+	width: 144px;
+	border: 1px solid #e5e5e5;
+	background: #eeeeee;
+	margin: 2px;
+	border-radius: 3px;
+}
+.caltable{
+	float: left;
+	margin: 0px 2px 2px 2px;
+	width: 146px;
+}
+.caltable td{
+	border: 1px solid #ffffff;
+	text-align: center;
+	width: 20px;
+}
+.date_inactive{
+	background: #f2f2f2;
+	border: 1px solid #eeeeee;
+	cursor: default;
+	color: #888888;
+}
+.date_active{
+	background: #e5e5e5;
+	border: 1px solid #d1d1d1;
+	cursor: pointer;
+}
+.today{
+	border:1px solid #aa0000 !important;
+}
+.date_active:hover{
+	background: #d5d5d5;
+	border: 1px solid #bababa;
+}
+.cal_move_icons{
+	float: left;
+	border: 1px solid #e5e5e5;
+	font-size: 14px;
+	width: 12px;
+	height: 14px;
+	padding: 1px 2px;
+	margin: 1px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+.cal_month{
+	float: left;
+	text-align: center;
+	line-height: 18px;
+	width: 104px;
+}
+.cal_move_icons:hover{
+	border: 1px solid #aaaaaa;
+	background: #d5d5d5;
+}
+.fa-caret-square-o-left,.fa-caret-square-o-right{
+	float: left;
+}

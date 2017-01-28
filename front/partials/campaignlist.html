@@ -1,0 +1,30 @@
+<div class="clearfix"></div>
+
+<div class="campaignlistbox">
+<h3>Your Campaigns list</h3>
+
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Campaign Name</th>
+				<th>Campaign start date</th>
+				<th>Campaign end date</th>
+				<th>Campaign total cost(Rs.)</th>
+				<th>Campaign total advance(Rs.)</th>
+				<th>Status</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="camdet in totalcampdetails" ui-sref="maincampaign({'campid':camdet.id,'city':'None', 'locality':'None', 'type':'None','check':'None','fromdate':'From', 'tilldate':'To'})">
+				<td>{{camdet.campaignname}}</td>
+				<td>{{camdet.startdate}}</td>
+				<td>{{camdet.enddate}}</td>
+				<td>{{camdet.campamount}}</td>
+				<td>{{camdet.campadvance}}</td>
+				<td ng-show="camdet.book_flag==1">Booked</td>
+				<td ng-show="camdet.book_flag==0">Not Booked</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>

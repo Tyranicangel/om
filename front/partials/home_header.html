@@ -1,0 +1,330 @@
+<div style="float:left;width:100%;border-bottom:1px solid #bababa;">
+	<div class="logo_div">
+		<img src="images/logo.png">
+	</div>
+	<div class="contact_div">
+		<img src="images/contact_icon.png" class="cntc_num_img_tg">
+		<span class="contact_info">+91 9666108492</span>
+	</div>
+	<div class="payment_dv">
+		<img src="images/payment.png" style="width:150px;">
+	</div>
+	<div class="payment_dv" style="margin-top:5px;">
+		<img src="images/verisign.png">
+	</div>
+	<!--<div class="analytics_div">
+		<div class="analytics_info">Use our free analytics software to plan your campaign</div>
+		<div class="analytics_button">Marketing Analytics</div>
+	</div> -->
+	<div class="account_div">
+		<!--<div class="account_info">
+			<i class="fa fa-bullhorn fa-lg"></i>
+			<div class="account_alert">3</div>
+		</div>-->
+		<div class="login_div">How it works?</div>
+		<div class="account_info" ng-show="user.username" ng-click="gotocamplist()">
+			<i class="fa fa-floppy-o fa-lg"></i>
+			<div class="account_alert">{{user.bookedcamp.length}}</div>
+		</div>
+		<div class="login_div" ng-hide="user.username" ng-click="loginclick()">Login/Signup</div>
+		<div class="login_div" ng-show="user.username" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+		<div class="maininner">{{user.username}}</div>
+			<div class="logininner" ng-show="hovervar">
+				<div class="login_innerdiv">Account</div>
+				<div class="login_innerdiv" ng-click="changepass()">Change password</div>
+				<div class="login_innerdiv" ng-click="logoutclick()">Logout</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="messageDiv"></div>
+	<div class="popupInner" id="changepass" ng-show="popupchangepass" style="display:block;">
+		<div class="popupClose" ng-click="closepopup()"><i class="fa fa-times"></i></div>
+		<h3>Change Password</h3>
+		<div class="leftPart" style="border-right:none;float:none;margin:0 auto;">
+			<div id="changePassError" ng-show="changepasserror">{{loginmessage}}</div>
+			<form class="loginForm" id="loginForm" ng-submit="changeuserpass()">
+				<input type="password" placeholder="Current password" id="currpass" ng-model="user.currentpass">
+				<input type="password" placeholder="New password" id="newpass" ng-model="user.newpass">
+				<input type="password" placeholder="Repeat new password" id="newpass2" ng-model="user.newpass2">
+				<div class="clearAll"></div>
+				<button type="submit" class="btn btn-large btn-red changePassButton" id="changePassbut">Change password</button>
+			</form>
+		</div>
+	</div>
+
+</div>
+
+<!-- booking Ad start -->
+
+<div class="popupInner" id="bookad" ng-show="bookthisad" style="display:block;height:350px;">
+	<div class="popupClose" ng-click="closepopup()"><i class="fa fa-times"></i></div>
+	<h3>Book This Asset</h3>
+		<div class="hoarding_calender_div"></div>
+		<div class="hording_data" style="width:auto;margin-left:20px;">		
+			<div class="price_div" style="width:480px;border:1px dashed #8a8a8a;">
+				<div class="original_price" style="height:50px;">
+					<div class="price_text" style="margin-left:10px;">Original Price:</div>
+					<div class='org_price_data'>1 month @ Rs {{mainasset.orginal_price}}/month</div>
+				</div>
+				<div class="our_price" style="width:240px;padding-left:20px;">
+					<div class="price_text">Our Price:</div>
+					<div class="price_select_div">
+						<div class="price_select">1 month @ Rs {{get_displayprice(mainasset.discount_percent,mainasset.orginal_price)}}/month</div>
+						<div class="select_icon_div">
+							<img src="images/select_icon.png">
+						</div>
+					</div>
+				</div>
+				<div class="saving_div">You save Rs {{get_discount(mainasset.discount_percent,mainasset.orginal_price)}}/-</div>
+				<div class="instal_cost inst_cst_ext_cls">
+					Installation Cost: Rs {{mainasset.installation}}/- <br><br>
+					<span style="padding-top:10px;border-top:1px dashed;float:left;width:208px;">
+						<b>Total</b>
+					</span>
+				</div>
+				<div class="advance_cost" style="text-align:left;padding-left:23px;margin-top:0px;width:232px;float:right;margin-bottom:20px;">	Advance({{mainasset.advance_percent}}% of total cost): Rs {{get_discount(mainasset.advance_percent,mainasset.orginal_price)}}/-
+				</div>
+			</div>
+			<div style="float:left;margin-left:30px;">
+					<img src="images/cal_icn.png" style="width:150px;">
+				</div>
+		</div>
+
+		<div style="clear:both;height:40px;"></div>
+
+		<div class="leftPartbook">
+			<div id="changePassError" ng-show="changepasserror">{{loginmessage}}</div>
+			
+				<datepicker todate='{{todate}}' togodate='{{fdate}}' placeholderdata='From' ng-model='fromdatebook' style="display:inline-block;"></datepicker>
+			
+				<datepicker todate='{{todate}}' togodate='{{tdate}}' placeholderdata='To' ng-model='tilldatebook' style="display:inline-block;"></datepicker>
+				
+				<div style="clear:both;height:10px;"></div>
+				<button class="booking_buttons" ng-click="booknow(mainasset)">Next>></button>
+				<div ng-show="bookingerror" style="color:#A40004;"> {{bookingerrval}} </div>			
+		</div>
+
+</div>
+
+<!-- booking Ad end -->
+
+<!-- Adding to Campaign start-->
+
+<div class="popupInner" id="addtocampaign" ng-show="adthistocampaign" style="display:block;height:450px;width:750px;top:80px;">
+	<div class="popupClose" ng-click="closepopup()"><i class="fa fa-times"></i></div>
+
+	<div class="selectcampbox" ng-show="user.bookedcamp">
+		<div class="selectcamp" ng-hide="camphomeaddclick">
+			<span>Select Campaign:</span> <select ng-model="selectedcamp" ng-change="selcampchange()">
+				<option ng-repeat="bookcam in user.bookedcamp" value="{{bookcam.id}}" ng-show="{{bookcam.book_flag==0}}">{{bookcam.campaignname}}</option>
+			</select>
+
+			<button class="booking_buttons bookcampbutton" ng-show="campaigndetail" ng-click="bookcampfinal(selectedcamp)">BOOK THIS CAMPAIGN</button>
+			<a ng-click="viewcamp(selectedcamp)" ng-show="campaigndetail" class="viewcampbtn">View Campaign</a>
+			<div class="campbookerrbox" ng-show="campbookerr">{{campbookerrval}}</div>
+
+		</div>
+		<div class="selectcamp" ng-show="camphomeaddclick">
+			<span>{{markerdata[0].campaignname}}</span>
+
+			<button class="booking_buttons bookcampbutton" ng-show="campaigndetail" ng-click="bookcampfinal(markerdata[0].id)">BOOK THIS CAMPAIGN</button>
+			<div class="campbookerrbox" ng-show="campbookerr">{{campbookerrval}}</div>
+
+		</div>
+		<div class="nocampselected" ng-hide="campaigndetail">
+			<div style="clear:both;height:30px;"></div>
+
+			<h4 style="color:#a40004;">No campaign selected . Please select a campaign to see its details and add this Ad to campaign.</h4>
+		</div>
+		<div class="adtothiscampbutton" ng-show="campaigndetail">
+
+				<datepicker todate='{{todate}}' togodate='{{fdate}}' placeholderdata='From' ng-model='fromdatecamp' style="display:inline-block;margin:3px;"></datepicker>
+			
+				<datepicker todate='{{todate}}' togodate='{{tdate}}' placeholderdata='To' ng-model='tilldatecamp' style="display:inline-block;margin:3px;"></datepicker>
+			<button class="booking_buttons" style="width: 200px;margin: 0 auto;float: none;padding:0" ng-click="addtoselectedcamp()">ADD TO SELECTED CAMPGN</button>
+			<div ng-show="bookingerror" style="color:#A40004;"> {{bookingerrval}} </div>
+		</div>
+	</div>
+	<div style="clear:both;height:10px;"></div>
+	<div class="campdetails" ng-show="campaigndetail">
+
+		<div class="campmaindetails">
+
+			<span><strong>Campaign Name:</strong> {{campaigndetail.campaignname}} </span>
+			<span><strong>Campaign start date:</strong> {{campaigndetail.startdate}} </span>
+			<span><strong>Campaign end date:</strong> {{campaigndetail.enddate}}</span><br>
+			<span><strong>Total advance to be paid:</strong> Rs. {{totalcampadvance}}</span>
+			<span><strong>Total campaign amount:</strong> Rs. {{totalcampamount}}</span>
+		</div>
+		
+		<div class="innerindibox" ng-show="campaigndetail.campasset">
+
+			<div class="indidetails" ng-repeat="campindi in campaigndetail.campasset">
+
+				<div class="innerindi" ng-show = "{{bookcheck[campindi.id]==0}}">
+					<div class="removecamp" ng-click="removecampasset(campindi.id)"><i class="fa fa-times"></i></div>
+					<img src="{{requesturl+'/uploads/'+campindi.asset.image}}" style="width:75px;float:left;margin-right:-5px;" />
+					<div class="indiinfobox">
+						
+						<span><strong>Location:</strong> {{campindi.asset.location}}</span>
+						<span><strong>Size:</strong> {{campindi.asset.size}}</span>
+						<span><strong>Visibility:</strong> {{campindi.asset.visibility}}</span>
+						<span><strong>Footfall:</strong> {{campindi.asset.footfall}}</span>
+						<span><strong>Lit:</strong> {{campindi.asset.lit}}</span>
+						<span><strong>Advance:</strong> Rs. {{get_discount(campindi.asset.advance_percent,campindi.asset.orginal_price)}}</span>
+						<span><strong>Total amount:</strong> Rs. {{get_displayprice(campindi.asset.discount_percent,campindi.asset.orginal_price)}}</span><br>
+
+						<span><strong>Booked From:</strong> {{campindi.bookstart}} <strong>To:</strong> {{campindi.bookend}}</span>
+					</div>
+				</div>
+				<div class="innerindi" ng-show = "{{bookcheck[campindi.id]==1}}" style="background:#a40004;">
+					<div class="removecamp" ng-click="removecampasset(campindi.id)"><i class="fa fa-times"></i></div>
+					<img src="{{requesturl+'/uploads/'+campindi.asset.image}}" style="width:75px;float:left;margin-right:-5px;" />
+					<div class="indiinfobox">
+						
+						<span><strong>Location:</strong> {{campindi.asset.location}}</span>
+						<span><strong>Size:</strong> {{campindi.asset.size}}</span>
+						<span><strong>Visibility:</strong> {{campindi.asset.visibility}}</span>
+						<span><strong>Footfall:</strong> {{campindi.asset.footfall}}</span>
+						<span><strong>Lit:</strong> {{campindi.asset.lit}}</span>
+						<span><strong>Advance:</strong> Rs. {{get_discount(campindi.asset.advance_percent,campindi.asset.orginal_price)}}</span>
+						<span><strong>Total amount:</strong> Rs. {{get_displayprice(campindi.asset.discount_percent,campindi.asset.orginal_price)}}</span><br>
+
+						<span><strong>Booked From:</strong> {{campindi.bookstart}} <strong>To:</strong> {{campindi.bookend}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="noindidetail" ng-hide="campaigndetail.campasset">
+
+			<h4 style="color:#a40004;">No Assets for the selected campaign yet! Add this asset to the selected campaign by clicking on 'ADD' button</h4>
+		</div>
+	</div>
+
+	<div class="nocamp" ng-hide="user.bookedcamp">
+
+		<h3>No Campaigns Yet!</hh3>
+
+	</div>
+
+	<div class="addnewcamp" ng-hide="camphomeaddclick">
+
+		<button class="booking_buttons" ng-click="createnewcamp()">CREATE NEW CAMPAIGN</button>
+
+	</div>
+
+
+</div>
+
+<div class="popupInner" id="createnewcamp" ng-show="createnewcampaign" style="display:block;">
+	<div class="popupClose" ng-click="closepopup()"><i class="fa fa-times"></i></div>
+	<h3>CREATE NEW CAMPAIGN</h3>
+	<div class="campinput">
+		<div class="inputtext">Campaign Name:</div> <input type="text" ng-model="newcampname" style="width:300px;padding:5px;"/>
+	</div>
+	<div class="campinput">
+		<div class="inputtext">Select date:</div>
+		<datepicker todate='{{todate}}' togodate='{{fdate}}' placeholderdata='From' ng-model='fromdatenewcamp' style="display:inline-block;float:left;"></datepicker>
+				
+		<datepicker todate='{{todate}}' togodate='{{tdate}}' placeholderdata='To' ng-model='tilldatenewcamp' style="display:inline-block;float:left;"></datepicker>
+	</div>
+
+	<div class="addnewcamp">
+
+		<button class="booking_buttons" ng-click="createthiscamp()">CREATE</button> (OR) <span class="existingcampbtn" ng-click="adthistocampaignfun()"> Select from existing campaigns</span>
+	</div>
+	<div style="clear:both;"></div>
+	<div class="createthiscamperr" ng-show="createcamperr">{{createcamperror}}</div>
+
+</div>
+
+<!-- Adding to Campaign end-->
+
+<div class="popupWrapper" ng-show="popupwrapper"></div>
+<div class="messageDiv"></div>
+<div class="popupInner" id="signIn" ng-show="popupsignin" style="display:block;">
+	<div class="popupClose" ng-click="closepopup()"><i class="fa fa-times"></i></div>
+	<h3>Let's sign you in.</h3>
+	<div class="leftPart">
+		<div id="siteLoginError" ng-show="loginerror">{{loginmessage}}</div>
+		<form class="loginForm" id="loginForm" ng-submit="loginuser()">
+			<input type="text" placeholder="email" id="siteEmail" ng-model="user.loginname">
+			<input type="password" placeholder="password" id="sitePassword" ng-model="user.loginpass">
+			<div class="clearAll"></div>
+			<div class="loginLinks">
+				<!-- <a class="forgotSitePassword pointer" ng-click="openforgot()">Forgot Password?</a> -->
+			</div>
+			<button type="submit" class="btn btn-large btn-red loginButton" id="siteLogin">Log In</button>
+		</form>
+	</div>
+	<div class="rightPart">
+		<!-- temp fix --> <div style="height:42px;width:100%;"></div>
+		<a class="auth-loginlink"><img src="http://recapture.in/images/facebooklogin.png" alt=""></a>
+		<!-- <a href="#"><img src="images/gpluslogin.png" alt=""></a> -->
+		<div class="orWala">OR</div>
+	</div>
+	<div class="clearAll"></div>
+	<div class="bottomPart">
+		<span class="signUp pointer" ng-click="opensignup()">Not a member yet? Join us!</span>
+	</div>	
+</div>
+<!-- registration box-->
+<div class="popupInner" id="signUp" ng-show="popupsignup" style="display:block;">
+	<div class="popupClose" ng-click="closepopup()"><i class="fa fa-times"></i></div>
+	<h3>Let's get you an account first</h3>
+	<div class="leftPart">
+		<div id="siteRegisterError" ng-show="registererror">{{registermessage}}</div>
+		<form class="loginForm" id="registerForm">
+			<input type="text" placeholder="user name" id="uname" ng-model="user.username">
+			<input type="email" placeholder="email id" id="email" ng-model="user.email">
+			<input type="number" placeholder="Phone number" id="email" ng-model="user.phoneno">
+			<input type="password" placeholder="password" id="password" ng-model="user.password">
+			<input type="password" placeholder="repeat the password" id="passwordRepeat" ng-model="user.repeatpassword">
+			<div class="clearAll"></div>
+			<div class="loginLinks">
+				<a class="openSignInPopup pointer" ng-click="opensignin()">Have an account?</a>
+			</div>
+			<button type="submit" class="btn btn-large btn-red loginButton" id="siteRegister" ng-click="registeruser()">Sign up</button>
+		</form>
+	</div>
+	<div class="rightPart">
+		<!-- temp fix --> <div style="height:42px;width:100%;"></div>
+		<a href="#" class="auth-loginlink"><img src="http://recapture.in/images/facebooklogin.png" alt=""></a>
+		<!-- <a href="#"><img src="images/gpluslogin.png" alt=""></a> -->
+		<div class="orWala">OR</div>
+	</div>
+	<div class="clearAll"></div>
+	
+
+</div>
+<!-- registration box ends-->
+
+<!--forgot password-->
+<div class="popupInner" id="forgotPassword" ng-show="popupforgot" style="display:block;">
+	<div class="popupClose" ng-click="closepopup()"><i class="fa fa-times"></i></div>
+	<h3>Password recovery</h3>
+	<div class="leftPart">
+		<div id="siteForgotPassMsg"></div>
+		<form class="loginForm" id="forgotForm">
+			<input type="text" placeholder="email" id="forgotEmail">
+			<div class="clearAll"></div>
+			<div class="loginLinks">
+				<a class="openSignInPopup pointer" ng-click="opensignin()">Login</a>
+			</div>
+			<button type="submit" class="btn btn-large btn-red loginButton" id="resetPassword">RESET</button>
+		</form>
+	</div>
+	<div class="rightPart">
+		<!-- temp fix --> <div style="height:42px;width:100%;"></div>
+		<a href="#" class="auth-loginlink"><img src="http://recapture.in/images/facebooklogin.png" alt=""></a>
+		<!-- <a href="#"><img src="images/gpluslogin.png" alt=""></a> -->
+		<div class="orWala">OR</div>
+	</div>
+	<div class="clearAll"></div>
+	<div class="bottomPart">
+		<span class="signUp pointer" ng-click="opensignup()">Not a member yet? Join us!</span>
+	</div>	
+
+</div>

@@ -1,0 +1,84 @@
+<div class="popupWrapper" ng-show="popupwrapper"></div>
+<div class="messageDiv"></div>
+<div class="popupInner" id="signIn" ng-show="popupsignin" style="display:block;">
+	<div class="popupClose" ng-click="closepopup()"><i class="fa fa-times"></i></div>
+	<h3>Let's sign you in.</h3>
+	<div class="leftPart">
+		<div id="siteLoginError" ng-show="loginerror">{{loginmessage}}</div>
+		<form class="loginForm" id="loginForm" ng-submit="loginuser()">
+			<input type="text" placeholder="email" id="siteEmail" ng-model="user.loginname">
+			<input type="password" placeholder="password" id="sitePassword" ng-model="user.loginpass">
+			<div class="clearAll"></div>
+			<div class="loginLinks">
+				<!-- <a class="forgotSitePassword pointer" ng-click="openforgot()">Forgot Password?</a> -->
+			</div>
+			<button type="submit" class="btn btn-large btn-red loginButton" id="siteLogin">Log In</button>
+		</form>
+	</div>
+	<div class="rightPart">
+		<!-- temp fix --> <div style="height:42px;width:100%;"></div>
+		<a class="auth-loginlink"><img src="http://recapture.in/images/facebooklogin.png" alt=""></a>
+		<!-- <a href="#"><img src="images/gpluslogin.png" alt=""></a> -->
+		<div class="orWala">OR</div>
+	</div>
+	<div class="clearAll"></div>
+	<div class="bottomPart">
+		<span class="signUp pointer" ng-click="opensignup()">Not a member yet? Join us!</span>
+	</div>	
+</div>
+<!-- registration box-->
+<div class="popupInner" id="signUp" ng-show="popupsignup" style="display:block;">
+	<div class="popupClose" ng-click="closepopup()"><i class="fa fa-times"></i></div>
+	<h3>Let's get you an account first</h3>
+	<div class="leftPart">
+		<div id="siteRegisterError" ng-show="registererror">{{registermessage}}</div>
+		<form class="loginForm" id="registerForm">
+			<input type="text" placeholder="email" id="email" ng-model="user.username">
+			<input type="password" placeholder="password" id="password" ng-model="user.password">
+			<input type="password" placeholder="repeat the password" id="passwordRepeat" ng-model="user.repeatpassword">
+			<div class="clearAll"></div>
+			<div class="loginLinks">
+				<a class="openSignInPopup pointer" ng-click="opensignin()">Have an account?</a>
+			</div>
+			<button type="submit" class="btn btn-large btn-red loginButton" id="siteRegister" ng-click="registeruser()">Sign up</button>
+		</form>
+	</div>
+	<div class="rightPart">
+		<!-- temp fix --> <div style="height:42px;width:100%;"></div>
+		<a href="#" class="auth-loginlink"><img src="http://recapture.in/images/facebooklogin.png" alt=""></a>
+		<!-- <a href="#"><img src="images/gpluslogin.png" alt=""></a> -->
+		<div class="orWala">OR</div>
+	</div>
+	<div class="clearAll"></div>
+	
+
+</div>
+<!-- registration box ends-->
+
+<!--forgot password-->
+<div class="popupInner" id="forgotPassword" ng-show="popupforgot" style="display:block;">
+	<div class="popupClose" ng-click="closepopup()"><i class="fa fa-times"></i></div>
+	<h3>Password recovery</h3>
+	<div class="leftPart">
+		<div id="siteForgotPassMsg"></div>
+		<form class="loginForm" id="forgotForm">
+			<input type="text" placeholder="email" id="forgotEmail">
+			<div class="clearAll"></div>
+			<div class="loginLinks">
+				<a class="openSignInPopup pointer" ng-click="opensignin()">Login</a>
+			</div>
+			<button type="submit" class="btn btn-large btn-red loginButton" id="resetPassword">RESET</button>
+		</form>
+	</div>
+	<div class="rightPart">
+		<!-- temp fix --> <div style="height:42px;width:100%;"></div>
+		<a href="#" class="auth-loginlink"><img src="http://recapture.in/images/facebooklogin.png" alt=""></a>
+		<!-- <a href="#"><img src="images/gpluslogin.png" alt=""></a> -->
+		<div class="orWala">OR</div>
+	</div>
+	<div class="clearAll"></div>
+	<div class="bottomPart">
+		<span class="signUp pointer" ng-click="opensignup()">Not a member yet? Join us!</span>
+	</div>	
+
+</div>

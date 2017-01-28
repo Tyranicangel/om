@@ -1,0 +1,185 @@
+<div class="campaign_details" style="height:250px;">
+
+	<div class="campaignamnts">
+		<div class="camptitle">
+			Test Campaign
+		</div>
+		<div class="campinclude">
+		<div class="indicampinc" ng-repeat="type in maintypes" ng-click="selectasset(type['id'],type['name'],type['count'])">{{type['name']}} <div class="numbrinc">{{type['count']}}</div></div>
+			
+		</div>
+
+		<div class="camploc">
+
+			<p><strong>City: </strong> Hyderabad</p>
+			<p><strong>Campaign date: </strong>01-01-2015 To 01-05-2015</p>
+
+		</div>
+
+	</div>
+
+	<div class="campaignamntsasset" ng-hide="selectedasset">
+		<div class="camptitle">
+			All assets
+			<span>{{totalmarkers}}</span>
+		</div>
+		<div class="campincludeasset">
+
+			<div class="indicampinc" ng-repeat="indiasset in mainmarkers"><img src="{{requesturl+'/uploads/'+indiasset.image}}" /> {{indiasset.location}} </div>
+			
+		</div>
+
+	</div>
+
+	<div class="campaignamntsasset" ng-show="selectedasset">
+		<div class="camptitle">
+			{{selectedassetname}}
+			<span>{{selectedassetcount}}</span>
+		</div>
+		<div class="campincludeasset">
+
+			<div class="indicampinc" ng-repeat="indiasset in mainmarkers" ng-hide="indiasset.type_id!=selectedasset"><img src="{{requesturl+'/uploads/'+indiasset.image}}" /> {{indiasset.location}} </div>
+			
+		</div>
+
+	</div>
+
+	<div class="campaignamntsloc">
+		<div class="assetloctitle">
+			Show assets located in
+		</div>
+		<div class="campincludeloc">
+
+			<div class="selectallwrap">
+
+				<input type="checkbox" /> <span class="inputname"> Select all</span>
+
+			</div>
+			<div class="assetlocoptions">
+
+				<div class="indilocation"><input type="checkbox" /> <span class="inputname"> Madhapur</span></div>
+				<div class="indilocation"><input type="checkbox" /> <span class="inputname"> Khairtabad</span></div>
+				<div class="indilocation"><input type="checkbox" /> <span class="inputname"> Begumpet</span></div>
+				<div class="indilocation"><input type="checkbox" /> <span class="inputname"> Abids</span></div>
+
+			</div>
+			
+		</div>
+
+	</div>
+
+	<div class="campaigncostdet">
+
+		<div class="costvars"><strong>Expected total footfall: </strong> 1,45,222 </div>
+		<div class="costvars" style="color:#a40004;">Total cost: Rs.4,00,000 <span class="actualcost">4,50,000</span></div>
+		<div class="costvars" style="color:#a40004;">Total installation cost: Rs.15,500 </div>	
+
+		<div class="saving_div">You save Rs.40,000/-</div>
+		<div class="price_select_div">
+			<div class="price_select">Total Advance Rs 28000/-</div>
+		</div>	
+
+	</div>
+
+
+</div>
+
+<div class="content" ng-click="check_dropdowns()">
+	<div class="content_main">
+		<div class="map_div" id='map_canvas'>
+			<ui-gmap-google-map id="mymap" center="mapcenter" zoom="mapzoom" draggable="true" mark-click="false" options='mapoptions'>
+				<ui-gmap-circle center="pos" radius="maprad" stroke='mapstroke' fill='mapfill' visible='visible'></ui-gmap-circle>
+				<ui-gmap-marker idKey='marker.id' ng-repeat='marker in mainmarkers' icon='marker.icon' coords='marker.coords' click='markerclick(marker)'></ui-gmap-marker>
+			</ui-gmap-google-map>
+		</div>
+		
+		<div class="content_info" ng-if="selected">
+			<div class="hoarding_info_div">
+				<div class="hoarding_img_div">
+					<img src="{{requesturl+'/uploads/'+mainasset.image}}" class='hoarding_img'>
+					<div class="hoarding_img_text" ng-click='show_slideshow()'>Click to view Photos</div>
+				</div>
+				<div class="hoarding_details">
+					<div class="details_indi">
+						<div class="details_bullet"></div>
+						<div class="details_text">Hoarding size (w x h):{{mainasset.size}}</div>
+					</div>
+					<div class="details_indi">
+						<div class="details_bullet"></div>
+						<div class="details_text">Minimum booking period: 1 month</div>
+					</div>
+					<div class="details_indi">
+						<div class="details_bullet"></div>
+						<div class="details_text">Lit: {{mainasset.lit}}</div>
+					</div>
+					<div class="details_indi">
+						<div class="details_bullet"></div>
+						<div class="details_text">Location: {{mainasset.location}}</div>
+					</div>
+					<div class="details_indi">
+						<div class="details_bullet"></div>
+						<div class="details_text">Visiblity:{{mainasset.visibility}}</div>
+					</div>
+				</div>
+				<div class="hoarding_calender_div"></div>
+				<div class="hording_data">
+					<div class='compare_div' style="display:none;">
+						<span class="add_compare">Add this to Compare list</span>
+					</div>
+					<div class="footfall_div">Footfall:{{mainasset.footfall}}</div>
+					<div class="price_div">
+						<div class="original_price">
+							<div class="price_text">Original Price:</div>
+							<div class='org_price_data'>1 month @ Rs {{mainasset.orginal_price}}/month</div>
+						</div>
+						<div class="our_price">
+							<div class="price_text">Our Price:</div>
+							<div class="price_select_div">
+								<div class="price_select">1 month @ Rs {{get_displayprice(mainasset.discount_percent,mainasset.orginal_price)}}/month</div>
+								<div class="select_icon_div">
+									<img src="images/select_icon.png">
+								</div>
+							</div>
+						</div>
+						<div class="saving_div">You save Rs {{get_discount(mainasset.discount_percent,mainasset.orginal_price)}}/-</div>
+						<div class="instal_cost">Installation Cost: Rs {{mainasset.installation}}/-</div>
+						<div class="advance_cost">Advance({{mainasset.advance_percent}}% of total cost): Rs {{get_discount(mainasset.advance_percent,mainasset.orginal_price)}}/-</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<div class="content_map">
+			<div class="marker_info"></div>
+			<div class="marker_info" style=''>
+				<div class="info_indi">
+					<div class="marker_icon"><img src='images/available_icon.png'></div>
+					<div class="marker_text">Available</div>
+				</div>
+				<div class="info_indi">
+					<div class="marker_icon"><img src='images/unavailable_icon.png'></div>
+					<div class="marker_text">Not Available</div>
+				</div>
+				<div class="info_indi">
+					<div class="marker_icon"><img src='images/partavail_icon.png'></div>
+					<div class="marker_text">Intermittently Available</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="slider" ng-if='showslider'>
+	<div class="slider_main">
+		<div class="slider_img">
+			<div class="slider_close" ng-click="close_slider()"><i class="fa fa-times fa-3x"></i></div>
+			<div class="slide_pnl_left" ng-show='show_left()' ng-click='move_left()'><i class="fa fa-angle-left"></i></div>
+			<div class="slider_main"><img src="{{requesturl+'/uploads/'+sliderimg}}" alt=""></div>
+			<div class="slide_pnl_right" ng-show='show_right()' ng-click='move_right()'><i class="fa fa-angle-right"></i></div>
+		</div>
+		<div class="slide_panel">
+			<div class="slide_img_pnl">
+					<img ng-repeat='slide in mainasset.slideshow' ng-class='imgactive(slide)' src="{{requesturl+'/uploads/'+slide.imagepath}}" ng-click='change_slider(slide)'>
+			</div>
+		</div>
+	</div>
+</div>

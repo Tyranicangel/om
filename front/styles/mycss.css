@@ -1,0 +1,542 @@
+* {
+	
+	font-family: arial;
+}
+.booking_buttons{ 
+
+	cursor:pointer;
+
+}
+.login_div .maininner {
+
+	width:120px;
+	font-family: open sans;
+}
+.changePassButton {
+
+	cursor:pointer;
+}
+.cntc_num_img_tg
+{
+	float: left;
+	margin-top: 2px;
+	border: 1px solid #bababa;
+	border-radius: 11px;
+	padding: 2px;
+}
+.login_div {
+
+	min-width:90px;
+	text-align: center;
+	float: left;
+	position: relative;
+	font-family: open sans;
+	position: relative;
+}
+.login_div .login_innerdiv {
+
+	position:relative;
+	padding:10px 5px;
+	z-index:999;
+	border:1px solid #bababa;
+	background:#FFF;
+	color:#000;
+	font-family: open sans;
+	border-top: 0px;
+}
+.login_div .login_innerdiv:hover {
+
+	background:#bababa;
+	color:#FFF;
+	cursor:pointer;
+}
+.header
+{
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid #bababa;
+}
+.payment_dv
+{
+	float: left;
+}
+.logininner {
+
+	width:120px;
+	position: absolute;
+	top:26px;
+	left: 0px;	
+}
+.logininner .login_innerdiv {
+
+	cursor:inherit;
+}
+.leftPartbook {
+
+	border-right:none;
+	float:none;
+	margin:0 auto;
+	display:inline-block;
+}
+.leftPartbook button {
+
+	margin:0 auto;
+	float:none;
+	padding:5px 25px;
+}
+.bookingdates {
+
+	width:600px;
+	margin:0 auto;
+}
+.bookingdates input {
+
+	width:100px;
+	background:#bababa;
+}
+.adbooking_div {
+
+	width: 200px;
+	margin: 0 auto;
+	margin-top:30px;
+}
+.adbooking_div button {
+
+	text-transform: uppercase;
+}
+.addnewcamp {
+
+	margin:0 auto;
+	width:250px;
+}
+.addnewcamp button{
+
+	width:250px;
+	margin-bottom:10px;
+}
+.nocamp {
+
+	margin-top:150px;
+}
+.selectcamp {
+
+	margin:15px 0;
+	width: 400px;
+	float: left;
+
+}
+.selectcamp select {
+
+	width:200px;
+	padding:5px;
+}
+.selectcamp span {
+
+	font-size:18px;
+}
+.adtothiscampbutton {
+
+	width:320px;
+	float:left;
+	margin:15px 0;
+	border: 1px solid #ccc;
+	padding: 5px;
+	background: #bababa;
+}
+.campmaindetails {
+
+	border: 1px solid #CCC;
+	width: 700px;
+	margin: 0 auto;
+	padding: 10px;
+	margin-bottom:10px;
+}
+.campmaindetails span {
+
+	width:100%;
+	margin:10px;
+	text-align:left;
+}
+.innerindi {
+
+	border: 1px solid #ccc;
+	background: #CCC;
+	padding: 10px;
+	display:inline-block;
+	width:96%;
+}
+.removecamp {
+
+	display: block;
+	float: right;
+	font-size: 20px;
+	color: #FFF;
+	width: 15px;
+	cursor: pointer;
+	border-radius: 50%;
+	padding: 2px;
+	background-color: #000; 
+	margin-top:15px;
+}
+.indiinfobox {
+
+	width:610px;
+	float:left;
+}
+.indiinfobox span {
+
+	padding:4px;
+	margin:4px;
+	line-height: 18px;
+}
+.bookcampbutton {
+
+	width: 200px;
+    margin: 0 auto;
+    float: none;
+    margin: 5px;
+}
+.innerindibox {
+
+	height:235px;
+	overflow-y:scroll;
+}
+.campinput {
+
+	width:100%;
+	float:left;
+	padding:10px;
+}
+.campinput .inputtext {
+
+	width:250px;float:left;
+}
+.campinput input[type='text']{
+	
+	float:left;
+}
+.existingcampbtn:hover{
+	text-decoration: underline;
+	cursor:pointer;
+	color:#a40004;
+}
+.campaign_details {
+
+	width:100%;
+	max-height:300px;
+	float:left;
+}
+.campaignamnts {
+
+	width:300px;
+	border:1px solid #ccc;
+	margin:10px 18px;
+	float:left;
+}
+.camptitle {
+
+	padding:5px;
+	background:#bababa;
+	font-weight:bold;
+	font-size: 12px;
+	height: 21px;
+	color: white;
+}
+.camptitle span{
+
+	font-weight: normal;
+	float:right;
+}
+.campinclude {
+
+	float:left;
+	width:100%;
+	min-height:100px;
+	max-height:200px;
+	overflow: auto;
+	overflow-y:scroll;
+	border-bottom: 1px solid #bababa;
+}
+.campinclude .indicampinc {
+
+	padding:4px;
+	font-size: 14px;
+	padding:10px;
+	border-bottom:1px dashed #bababa;
+}
+.campinclude .indicampinc:hover {
+
+	background: #f3f3f3;
+	cursor:pointer;
+}
+.indicampinc .numbrinc {
+
+	float:right;
+}
+.camploc p{
+
+	padding:5px;
+	font-size:12px;
+	float:left;
+	margin:0;
+}
+.campincludeasset {
+
+	max-height:200px;
+	overflow: auto;
+	overflow-y:scroll;
+}
+.campincludeasset .indicampinc img{
+
+	width:50px;
+	vertical-align: middle;
+	margin-right:5px;
+
+}
+.campincludeasset .indicampinc {
+
+	padding:4px;
+	font-size: 14px;
+	padding:10px;
+	margin:5px 0;
+	background:#f3f3f3;
+	max-width: 305px;
+}
+.campincludeasset .indicampinc .numbrinc {
+
+	float:right;
+}
+.campincludeasset .indicampinc .numbrinc i{
+
+	cursor:pointer;
+}
+.campaignamntsasset {
+
+	width:350px;
+	margin:10px 18px;
+	float:left;
+}
+.camptitleedit {
+
+	cursor:pointer;
+}	
+.camptitleedit:hover{
+
+	text-decoration:underline;
+}
+.campaignamntsloc {
+
+	width:200px;
+	margin:10px 18px;
+	float:left;
+	border:1px solid #ccc;
+}
+.assetloctitle {
+
+	padding:5px;
+	margin:5px;
+	border-bottom: 1px solid #ccc;
+	width:170px;
+	font-size: 12px;
+}
+.campaignamntsloc .campincludeloc .indicampinc {
+
+	padding:4px;
+	font-size: 14px;
+	padding:10px;
+	margin:5px 0;
+}
+.campincludeloc input {
+
+	margin: 5px 10px;
+}
+.campincludeloc {
+	font-size: 13px;
+}
+.selectallwrap input{
+
+	margin:3px;
+	float:left;
+}
+.inputname {
+
+	line-height:19px;
+	float:left;
+}
+.selectallwrap {
+
+	padding:5px;
+	margin:5px;
+	border-bottom:1px solid #ccc;
+	width:170px;
+	float:left;
+	margin-bottom: 0px;
+}
+.indilocation {
+
+	width:110px;
+	float:left;
+	padding:5px;
+}
+.assetlocoptions input{
+
+	margin:3px;
+	float:left;
+
+}
+.assetlocoptions {
+
+	padding:10px;
+	float: left;
+	overflow-y:scroll;
+}
+.campaigncostdet {
+
+	padding:10px;
+	width:250px;
+	background:#f3f3f3;
+	float:left;
+	margin-top: 10px;
+}
+.costvars {
+
+	font-size:12px;
+	padding:5px;
+}
+.actualcost {
+
+	text-decoration: line-through;
+	margin-left:15px;
+}
+.price_select_div {
+	background: #FFF;
+}
+.campbookbtns {
+
+	width:240px;
+	float:left;
+	padding:4px;
+}
+.campbookbtns .campbook {
+	
+	width:80px;
+	margin:0 auto;
+	background: #bababa;
+	padding:5px;
+	border-radius:4px;
+	cursor:pointer;
+	text-align: center;
+
+}
+.campbookbtns .campbook:hover {
+
+	opacity:0.8;
+}
+.generateurlbox {
+
+	width:240px;
+	float:left;
+}
+.generateurlbox input{
+
+	width:240px;
+	float:left;
+	padding:2px;
+}
+.generatebtn {
+
+	font-size: 13px;
+	margin:5px;
+	float:left;
+	width:146px;
+}
+.generatebtn:hover {
+
+	cursor:pointer;
+	text-decoration: underline;
+	color:#a40004;
+	
+}
+.generateurlbox span {
+
+	float:left;
+	margin-left:7px;
+	font-size:11px;
+	width:70px;
+	padding:6px 0;
+}
+.generateurlbox span:hover{
+
+	color:#a40004;
+	text-decoration: underline;
+	cursor: pointer;
+}
+.editcampbtn {
+
+	width:200px;
+	float:left;
+	padding:5px;
+	background: #FFF;
+	text-align: center;
+	font-size: 15px;
+	font-weight: bold;
+	cursor: pointer;
+	border:1px solid #bababa;
+	box-shadow: 0px 0px 12px rgba(0,0,0,0.2);
+}
+.viewcampbtn:hover {
+
+	cursor:pointer;
+	opacity:0.9;
+	text-decoration: underline;
+}
+.topmenuwrapper {
+
+	text-align: center;
+	height:20px;
+	background: #f4f4f4;
+	width:100%;
+	float:left;
+	cursor:pointer;
+}
+.topmenuwrapper i{
+
+	font-size:20px;
+	font-weight: bold;
+	cursor: pointer;
+}
+.camptitle a:hover{
+
+	cursor:pointer;
+	text-decoration: underline;
+}
+.assetbook {
+
+	width: 35px;
+	text-align: center;
+	margin: 0 auto;
+	float: none;
+}
+.selectcamp h3{
+
+	margin:2px 0;
+}
+.account_info {
+
+	cursor:pointer;
+}
+.campaignlistbox {
+
+	width:1050px;
+	margin:0 auto;
+}
+.campaignlistbox table {
+
+	border:1px solid #ccc;
+	font-size:15px;
+}
+.campaignlistbox table tr {
+
+	font-size: 14px;
+	cursor: pointer;
+}
